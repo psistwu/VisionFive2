@@ -1,0 +1,11 @@
+services:
+  image-builder:
+    image: ${BUILDER_IMAGE}
+    environment:
+      SSH_AUTH_SOCK: ${SSH_AGENT_IN_CONTAINER}
+      USER:
+      USER_ID:
+    volumes:
+      - ..:/workspace
+      - ${SSH_AUTH_SOCK}:${SSH_AGENT_IN_CONTAINER}
+    command: /workspace/docker/start.sh
